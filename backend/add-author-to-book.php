@@ -5,6 +5,9 @@ require "..\helpers\ApiHelper.php";
 
 addAuthorToBook();
 
+/**
+ * Метод API, который позволяет добавить автора к книге
+ */
 function addAuthorToBook(){
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
