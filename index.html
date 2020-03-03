@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Библиотека</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="assets/css/Style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<div class="container pt-4 row" id="list">
+    <div class="col-sm">
+        <div class="">
+            <h1>Книги <button><i class="fa fa-plus-circle" v-on:click="ShowBlockBook"></i></button></h1>
+            <div v-show="ShowAddBook">
+                <input class="form-control" placeholder="Введите название книги..." type="text" id="book_name_add"/>
+                <select class="form-control"  id="Select_book">
+                    <option v-for="author in authors" v-bind:value="author['author_id']">{{author['author_name']}}</option>
+                </select>
+                <input class="form-control" type="file" id="profile_pic" accept=".jpg, .jpeg, .png" >
+                <textarea class="form-control opis" id="book_description_add" rows="1" placeholder="Введите описание книги..."></textarea>
+                <br>
+                <input class="form-control btn-success" type="button" value="Принять" v-on:click="AddBook">
+                <input class="form-control btn-danger" type="button" value="Отмена" v-on:click="ShowBlockBook">
+                <br>
+            </div>
+        </div>
+        <div class="">
+            <div class="form-group">
+                <input type="text" placeholder="Поиск книги..." @input="Search" class="form-control" />
+            </div>
+
+            <hr>
+
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-action" name="book_list" v-on:click="selectItem(item)" v-for="item in items">
+                    {{item['book_name']}}
+                     <i class="fa fa-trash pull-right" v-on:click="deleteItem(item)" ></i>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-sm">
+        <div class="">
+            <h2 class="oblojka">Обложка</h2>
+            <img v-bind:src="this.book_pic" id="oblojka" height="500" width="430"/>
+        </div>
+    </div>
+
+    <div class="col-sm">
+
+        <div class="">
+            <h3 class="avtor"><button><i v-on:click="Edit_author()" class="fa fa-pencil-square-o ihonka"></i></button>Автор <i class="fa fa-plus-circle" v-on:click="ShowBlockAuthor"></i></h3>
+            <div v-show="ShowBlockAuthorAdd">
+                <input class="form-control" placeholder="Введите ФИО автора..." type="text" id="author_name_add"/>
+                <input class="form-control" type="file" id="author_pic_add" accept=".jpg, .jpeg, .png" >
+                <br>
+                <input class="form-control btn-success" type="button" value="Принять" v-on:click="Addauthor">
+                <input class="form-control btn-danger" type="button" value="Отмена" v-on:click="ShowBlockAuthor">
+                <br>
+            </div>
+            <input class="col-lg-12 form-control Avtors" type="text" disabled id="Textbox1">
+            <img class="col-lg-12 Avtors author-pic" v-bind:src="this.author_pic" height="152" width="271"/>
+        </div>
+
+        <div class="">
+            <h5 class="books_text text-left">Краткое описание книги:</h5>
+            <p class="text">{{this.description}}</p>
+        </div>
+    </div>
+
+</div>
+    <script src="assets/js/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

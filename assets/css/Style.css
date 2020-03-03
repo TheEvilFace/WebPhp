@@ -1,0 +1,40 @@
+.oblojka{
+    margin-left: 135px;
+}
+
+.avtor{
+    margin-left: 120px;
+}
+.Avtors{
+    margin-left: 60px;
+}
+.books_text{
+    margin-left: 60px;
+    white-space: nowrap;
+}
+.text{
+    margin-left: 60px;
+}
+
+.author-pic{
+    height: 85%;
+    width: 85%;
+}
+
+button {
+    outline: none;
+    border: 0;
+    background: transparent;
+}
+button:active, button:focus {
+    outline: none !important;
+}
+button::-moz-focus-inner {
+    border: 0 !important;
+}
+.director{
+    background: #6c757d;
+}
+.opis{
+    height: 100px;
+}
